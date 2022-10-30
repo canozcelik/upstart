@@ -14,5 +14,4 @@ public class Article {
     private String image;
     private LocalDateTime publishDate;
     private Source source;
-
 }

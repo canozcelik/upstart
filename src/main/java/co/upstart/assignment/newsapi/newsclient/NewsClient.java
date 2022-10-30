@@ -1,10 +1,10 @@
 package co.upstart.assignment.newsapi.newsclient;
 
 
-import co.upstart.assignment.newsapi.domain.Result;
+import co.upstart.assignment.newsapi.domain.News;
 
 public interface NewsClient {
 
-    Result getArticles(String query);
+    News getArticles(String query);
 
 }

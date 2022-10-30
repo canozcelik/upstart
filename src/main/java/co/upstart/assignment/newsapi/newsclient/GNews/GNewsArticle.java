@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class GNewsArticle {
+
     private String title;
     private String description;
     private String content;
