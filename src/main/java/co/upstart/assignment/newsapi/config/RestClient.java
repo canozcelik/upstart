@@ -1,6 +1,5 @@
 package co.upstart.assignment.newsapi.config;
 
-import co.upstart.assignment.newsapi.domain.dto.response.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -14,18 +13,17 @@ import java.util.Arrays;
 
 @Component
 @RequiredArgsConstructor
-public class RestClient {
-
+public class RestClient<T> {
 
     // TODO generic type can be used here
     private final RestTemplate restTemplate;
 
-    public Response createGetRequest(String url) {
+    public T createGetRequest(String url, ParameterizedTypeReference<T> type) {
+
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-
-        return restTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<Response>(){}).getBody();
+        return restTemplate.exchange(url, HttpMethod.GET, entity, type).getBody();
     }
 
 }

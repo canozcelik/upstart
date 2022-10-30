@@ -8,6 +8,6 @@ import java.util.List;
 @Setter
 @Getter
 public class Response {
-    private int totalArticles;
+    private int total;
     private List<ArticleDTO> articles;
 }
