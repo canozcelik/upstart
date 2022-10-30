@@ -5,6 +5,6 @@ import co.upstart.assignment.newsapi.domain.News;
 
 public interface NewsClient {
 
-    News getArticles(String query);
+    News getArticles(String query, int size);
 
 }

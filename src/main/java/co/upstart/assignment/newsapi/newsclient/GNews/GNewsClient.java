@@ -19,14 +19,10 @@ public class GNewsClient implements NewsClient {
     private static final String URL = "https://gnews.io/api/v4/search?q=dolar&token=0a7e7fc424e0ad437902a2a0bd771365";
 
     @Override
-    public News getArticles(String query) {
+    public News getArticles(String query, int size) {
 
 
         GNewsResponse response = restClient.createGetRequest(URL, new ParameterizedTypeReference<GNewsResponse>() {});
-
-
-
-
         return mapper.toResponse(response);
     }
 }

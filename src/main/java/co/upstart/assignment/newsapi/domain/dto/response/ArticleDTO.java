@@ -1,10 +1,12 @@
 package co.upstart.assignment.newsapi.domain.dto.response;
 
+import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Setter
+@Getter
 public class ArticleDTO {
 
     private String title;

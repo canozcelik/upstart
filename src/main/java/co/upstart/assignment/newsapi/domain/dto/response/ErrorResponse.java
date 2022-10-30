@@ -1,12 +1,13 @@
 package co.upstart.assignment.newsapi.domain.dto.response;
 
+import lombok.Builder;
 import lombok.Setter;
 
-import java.util.List;
-
 @Setter
+@Builder
 public class ErrorResponse {
 
-    private List<Error> errors;
+    private int code;
+    private String message;
 
 }

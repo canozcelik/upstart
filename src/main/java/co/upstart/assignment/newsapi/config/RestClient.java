@@ -1,11 +1,9 @@
 package co.upstart.assignment.newsapi.config;
 
+import co.upstart.assignment.newsapi.exception.ExternalApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,6 +21,12 @@ public class RestClient<T> {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<T> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, type);
+        HttpStatus httpStatus = responseEntity.getStatusCode();
+        if (httpStatus != HttpStatus.OK) {
+           throw new ExternalApiException("An error has been occured!", httpStatus.value());
+        }
+
         return restTemplate.exchange(url, HttpMethod.GET, entity, type).getBody();
     }
 
