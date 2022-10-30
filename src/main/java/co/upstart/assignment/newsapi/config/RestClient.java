@@ -13,11 +13,11 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class RestClient<T> {
 
-    // TODO generic type can be used here
     private final RestTemplate restTemplate;
 
     public T createGetRequest(String url, ParameterizedTypeReference<T> type) {
 
+        restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);

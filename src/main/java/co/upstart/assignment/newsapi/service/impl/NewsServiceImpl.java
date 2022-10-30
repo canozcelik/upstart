@@ -27,7 +27,7 @@ public class NewsServiceImpl implements NewsService {
 
         if(regex.matcher(query).find() && !query.startsWith("\"") && query.charAt(query.length()-1) != '"') {
             return new StringBuilder("\"")
-                    .append(query)
+                    .append(query.trim())
                     .append("\"").toString();
         }
 

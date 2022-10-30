@@ -1,0 +1,4 @@
+news:
+  client:
+    url: https://gnews.io/api/v4/search
+    token: 0a7e7fc424e0ad437902a2a0bd771365
